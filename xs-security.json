@@ -1,0 +1,7 @@
+{
+  "xsappname": "comtrainingday3exer1baranco",
+  "tenant-mode": "dedicated",
+  "description": "Security profile of called application",
+  "scopes": [],
+  "role-templates": []
+}
