@@ -53,12 +53,17 @@ function (Controller, MessageToast) {
         onPressCheckout: function () {
             var oInputFNameValue = this.getView().byId("idInptFName").getValue();
             var oInputLNameValue = this.getView().byId("idInptLName").getValue();
-
+        
+            // Get i18n resource bundle
+            var oTextBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+            
             // Check if first name or last name is blank
             if (oInputFNameValue === "" || oInputLNameValue === "") {
-                sap.m.MessageToast.show("Personal details are required.");
+                var sErrorMsg = oTextBundle.getText("personalDetailsRequired");
+                sap.m.MessageToast.show(sErrorMsg);
             }
         },
+        
 
         fnDisplayMsg: function (sMsg) {
             MessageToast.show(sMsg);

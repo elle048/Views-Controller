@@ -8,7 +8,7 @@
           class="sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer sapUiResponsivePadding--floatingFooter">
 
         <VBox id="idVBox" class="sapUiSmallMargin">
-            <f:SimpleForm id="idSimpleForm" editable="true" layout="ResponsiveGridLayout" title="Details"
+            <f:SimpleForm id="idSimpleForm" editable="true" layout="ResponsiveGridLayout" title="{i18n>detailsTitle}" 
                           labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false"
                           emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1"
                           columnsM="1" singleContainerFullSize="false">
@@ -59,16 +59,16 @@
             <items>
                 <ColumnListItem id="idColListItem1" vAlign="Middle">
                     <cells>
-                        <Text id="idText1" text="iPhone 14 Pro Max" />
-                        <Text id="idText2" text="2" />
-                        <Text id="idText3" text="$2000" />
+                        <Text id="idText1" text="{i18n>iphoneItem}" />
+                        <Text id="idText2" text="{i18n>iphoneQty}" />
+                        <Text id="idText3" text="{i18n>iphonePrice}" />
                     </cells>
                 </ColumnListItem>
                 <ColumnListItem id="idColListItem2" vAlign="Middle">
                     <cells>
-                        <Text id="idText4" text="Louis Vuitton Speedy" />
-                        <Text id="idText5" text="1" />
-                        <Text id="idText6" text="$14000" />
+                        <Text id="idText4" text="{i18n>lvBagItem}" />
+                        <Text id="idText5" text="{i18n>lvBagQty}" />
+                        <Text id="idText6" text="{i18n>lvBagPrice}" />
                     </cells>
                 </ColumnListItem>
             </items>
