@@ -1,5 +1,4 @@
-{
-  "_version": "1.65.0",
+{"_version": "1.65.0",
   "sap.app": {
     "id": "com.training.day3exer1baranco",
     "type": "application",
@@ -73,20 +72,35 @@
         "viewPath": "com.training.day3exer1baranco.view"
       },
       "routes": [
-        {
-          "name": "RouteMainView",
-          "pattern": ":?query:",
-          "target": [
-            "TargetMainView"
-          ]
-        }
-      ],
+                {
+                    "name": "RouteMainView",
+                    "pattern": ":?query:",
+                    "target": [
+                        "TargetMainView"
+                    ]
+                },
+                {
+                    "name": "RouteReviewPage",
+                    "pattern": "Review/{firstName}",
+                    "target": ["TargetReviewPage"]
+                }
+            ],
+
       "targets": {
-        "TargetMainView": {
-          "id": "MainView",
-          "name": "MainView"
-        }
-      }
+                "TargetMainView": {
+                    "viewType": "XML",
+                    "transition": "slide",
+                    "clearControlAggregation": false,
+                    "viewId": "MainView",
+                    "viewName": "MainView"
+                },
+                "TargetReviewPage": {
+                    "viewId": "ReviewPage",
+                    "viewName": "ReviewPage"
+                }
+            }
+
+
     },
     "rootView": {
       "viewName": "com.training.day3exer1baranco.view.App",
