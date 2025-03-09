@@ -80,7 +80,10 @@
         <footer>
             <OverflowToolbar id="idOFTFooter">
                 <ToolbarSpacer id="idTSpacerFooter"/>
+                <Button id="_IDGenButton2" text="{i18n>TipsBtnText}" tooltip="{i18n>TipsBtnTooltip}" press="onPressTips" />
+
                 <Button id="idBtnCheckout" text="{i18n>checkoutBtnText}" tooltip="{i18n>checkoutBtnTooltip}" press="onPressCheckout" />
+                
             </OverflowToolbar>
         </footer>
     </Page>

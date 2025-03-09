@@ -1,11 +1,12 @@
 sap.ui.define([
     "sap/ui/core/mvc/Controller",
-    "sap/m/MessageToast"
+    "sap/m/MessageToast",
+    "sap/m/MessageBox",
 ], 
 /**
  * @param {typeof sap.ui.core.mvc.Controller} Controller
  */
-function (Controller, MessageToast) {
+function (Controller, MessageToast, MessageBox) {
     return Controller.extend("com.training.day3exer1baranco.controller.MainView", {
         onInit() {
             // Initialization code
@@ -71,31 +72,54 @@ function (Controller, MessageToast) {
             }
         },
 
-         
-     onPressCheckout: function (){
-        var oInputFName = this.getView().byId("idInptFName");
-        var oInputLName = this.getView().byId("idInptLName");
-        var oInputFNameValue = oInputFName.getValue();
-        var oInputLNameValue = oInputLName.getValue();
-        var oRouter = this.getOwnerComponent().getRouter();
-
-        // Check if first name and last name is blank
-        if (oInputFNameValue === "" || oInputLNameValue === ""){
-           
-// set value state to Error
-            oInputFName.setValueState("Error");
-            oInputLName.setValueState("Error");
-        } else {
-            oInputFName.setValueState("None");
-            oInputLName.setValueState("None");
-
-            //Navigate to review page passing first
-            oRouter.navTo("RouteReviewPage", {
-                firstName: oInputFNameValue
+        onPressTips: function () {
+            sap.m.MessageBox.information(this.getOwnerComponent().getModel("i18n").getResourceBundle().getText("tipdescription"), {
+                title: this.getOwnerComponent().getModel("i18n").getResourceBundle().getText("tipsDialogTitle"),
+                actions: [sap.m.MessageBox.Action.OK],
+                onClose: function (oAction) {
+                    // Optional: Do something when the user clicks "OK"
+                    console.log("Tips MessageBox closed");
+                }
             });
+        },
+        
 
-        }
-    },
+
+         
+        onPressCheckout: function () {
+            var oInputFName = this.getView().byId("idInptFName");
+            var oInputLName = this.getView().byId("idInptLName");
+            var oInputFNameValue = oInputFName.getValue();
+            var oInputLNameValue = oInputLName.getValue();
+            var oRouter = this.getOwnerComponent().getRouter();
+            var oResourceBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+
+            // Check if first name and last name is blank
+            if (oInputFNameValue === "" || oInputLNameValue === "") {
+                // Set value state to Error
+                oInputFName.setValueState("Error");
+                oInputLName.setValueState("Error");
+            } else {
+                oInputFName.setValueState("None");
+                oInputLName.setValueState("None");
+
+                // Show confirmation MessageBox before navigating
+                MessageBox.confirm(oResourceBundle.getText("checkoutdescription"), {
+                    title: oResourceBundle.getText("checkoutDialogTitle"),
+                    actions: [MessageBox.Action.YES, MessageBox.Action.NO],
+                    emphasizedAction: MessageBox.Action.YES,
+                    onClose: function (oAction) {
+                        if (oAction === MessageBox.Action.YES) {
+                            // Navigate to review page when YES is pressed
+                            oRouter.navTo("RouteReviewPage", {
+                                firstName: oInputFNameValue
+                            });
+                        }
+                    }
+                });
+            }
+        },
+
 
 
         

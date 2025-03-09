@@ -2,6 +2,7 @@
     xmlns:mvc="sap.ui.core.mvc" displayBlock="true"
     xmlns="sap.m"
     xmlns:core="sap.ui.core">
+    
     <Page id="idReviewPage" title="{i18n>reviewTitle}" floatingFooter="true">
         <content>
             <core:Fragment fragmentName="com.training.day3exer1baranco.fragment.ShoppingCart" type="XML" />
@@ -9,8 +10,10 @@
         <footer>
             <OverflowToolbar id="idOFTFooterReview">
                 <ToolbarSpacer id="idTSpacerFooterReview"/>
+                <Button id="idBtnPromos" text="{i18n>promoBtn}" tooltip="{i18n>promoTooltip}" press="onPressPromo"/>
                 <Button id="idBtnBack" text="{i18n>backBtn}" tooltip="{i18n>backTooltip}" press="onPressBack"/>
             </OverflowToolbar>
         </footer>
     </Page>
+
 </mvc:View>
