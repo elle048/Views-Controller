@@ -4,14 +4,24 @@
     xmlns:f="sap.ui.layout.form"
     xmlns:core="sap.ui.core">
 
-    <Page id="page" title="{i18n>title}" floatingFooter="true"
-          class="sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer sapUiResponsivePadding--floatingFooter">
+    <Page id="page" floatingFooter="true"
+        class="sapUiResponsivePadding--header sapUiResponsivePadding--content sapUiResponsivePadding--footer sapUiResponsivePadding--floatingFooter">
+
+        <!-- Corrected customHeader placement -->
+        <customHeader>
+            <Bar id="_IDGenBar">
+                <contentMiddle>
+                    <Title id="pageTitle" text="{i18n>title}" />
+
+                </contentMiddle>
+            </Bar>
+        </customHeader>
 
         <VBox id="idVBox" class="sapUiSmallMargin">
             <f:SimpleForm id="idSimpleForm" editable="true" layout="ResponsiveGridLayout" title="{i18n>detailsTitle}" 
-                          labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false"
-                          emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1"
-                          columnsM="1" singleContainerFullSize="false">
+                labelSpanXL="3" labelSpanL="3" labelSpanM="3" labelSpanS="12" adjustLabelSpan="false"
+                emptySpanXL="4" emptySpanL="4" emptySpanM="4" emptySpanS="0" columnsXL="1" columnsL="1"
+                columnsM="1" singleContainerFullSize="false">
                 <f:content>
                     <Label id="idLblFName" text="{i18n>firstNameLbl}" />
                     <Input id="idInptFName" value="" />
@@ -20,10 +30,8 @@
                     <Label id="idLblMOP" text="{i18n>mopLbl}" />
                     <Label id="idLblPhone" text="{i18n>phoneLbl}" visible="false"/>
                     <Input id="idInputPhone" value="" visible="false"/>
-
                     <Label id="idLblCard" text="{i18n>creditCardLbl}" visible="false"/>
                     <Input id="idInptCard" value="" visible="false"/>
-
                     <Select id="idSelMOP" forceSelection="false" change="onChangeMOP">
                         <items>
                             <core:Item id="idItmCOD" text="{i18n>codItm}" key="COD"/>
@@ -31,59 +39,19 @@
                             <core:Item id="idItmGCash" text="{i18n>gcashItm}" key="GCASH"/>
                         </items>
                     </Select>
-                 </f:content>
+                </f:content>
             </f:SimpleForm>
         </VBox>
 
-  
-        <!-- <Table id="idTableSCart" inset="false">
-            <headerToolbar>
-                <OverflowToolbar id="idOFT">
-                    <content>
-                        <Title id="idTableTitleSCart" text="{i18n>shoppingCartTitle}"/>
-                        <ToolbarSpacer id="idTSpacer"/>
-                        <Button id="idBtnAddItems" icon="sap-icon://cart-4" tooltip="{i18n>addToCartTooltip}" press="onAddItem" />
-                    </content>
-                </OverflowToolbar>
-            </headerToolbar>
-            <columns>
-                <Column id="idCol1">
-                    <Text id="idColText1" text="{i18n>itemLbl}" />
-                </Column>
-                <Column id="idCol2">
-                    <Text id="idColText2" text="{i18n>quantityLbl}" />
-                </Column>
-                <Column id="idCol3">
-                    <Text id="idColText3" text="{i18n>priceLbl}" />
-                </Column>
-            </columns>
-            <items>
-                <ColumnListItem id="idColListItem1" vAlign="Middle">
-                    <cells>
-                        <Text id="idText1" text="{i18n>iphoneItem}" />
-                        <Text id="idText2" text="{i18n>iphoneQty}" />
-                        <Text id="idText3" text="{i18n>iphonePrice}" />
-                    </cells>
-                </ColumnListItem>
-                <ColumnListItem id="idColListItem2" vAlign="Middle">
-                    <cells>
-                        <Text id="idText4" text="{i18n>lvBagItem}" />
-                        <Text id="idText5" text="{i18n>lvBagQty}" />
-                        <Text id="idText6" text="{i18n>lvBagPrice}" />
-                    </cells>
-                </ColumnListItem>
-            </items>
-        </Table> -->
+        <!-- Include fragment properly -->
+        <core:Fragment fragmentName="com.training.day3exer1baranco.fragment.ShoppingCart" type="XML" />
 
-            <core:Fragment fragmentName="com.training.day3exer1baranco.fragment.ShoppingCart" type="XML" />
-
+        <!-- Move footer content inside the <Page> footer aggregation -->
         <footer>
-            <OverflowToolbar id="idOFTFooter">
+            <OverflowToolbar id="idOFTFooter" class="customFooter"> 
                 <ToolbarSpacer id="idTSpacerFooter"/>
                 <Button id="_IDGenButton2" text="{i18n>TipsBtnText}" tooltip="{i18n>TipsBtnTooltip}" press="onPressTips" />
-
                 <Button id="idBtnCheckout" text="{i18n>checkoutBtnText}" tooltip="{i18n>checkoutBtnTooltip}" press="onPressCheckout" />
-                
             </OverflowToolbar>
         </footer>
     </Page>

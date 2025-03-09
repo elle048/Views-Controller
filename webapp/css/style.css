@@ -1,1 +1,27 @@
-/* Enter your custom styles here */
+/* Style the header title text for both the page and the MessageBox */
+.customTextHeader, .sapMDialog .sapMTitle {
+    color: rgb(255, 0, 217) !important; /* Your desired color */
+}
+
+/* Color only the page footer */
+.customFooter {
+    background-color: #e4f6a4 !important;
+}
+
+/* Remove background color from the MessageBox footer */
+.sapMDialog .sapMDialogFooter {
+    background-color: transparent !important;
+}
+
+.sapMDialog .sapMHeader-CTX {
+    background-color: #a7c8e7 !important;
+ /* Debugging: See if the style applies */
+}
+
+
+
+/* Change the text color of the Page Header Title */
+.sapMBar .sapMTitle {
+    color: rgb(161, 0, 43) !important; /* Change this to your desired color */
+}
+
